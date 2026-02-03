@@ -1,17 +1,12 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import {
-  FaPhone,
   FaEnvelope,
-  FaUser,
-  FaHeart,
-  FaShoppingCart,
   FaBars,
   FaTimes,
   FaWhatsapp,
   FaFacebookF,
   FaInstagram,
-  FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
 import navLinks from "../data/navLinks";
@@ -112,11 +107,26 @@ const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <div className="text-5xl md:text-6xl font-bold text-brand-red font-display hover:scale-105 transition-transform">
-                <span className="text-yellow-900 ">Kalika </span>Furniture
+                <span className="text-yellow-900">Kalika </span>Furniture <span className="text-xl md:text-3xl">& Industries</span>
+              </div>
+            </div> */}
+            <div className="flex items-center">
+              {/* Logo */}
+              {/* <img
+                src="/images/KalikaFurnitureLogo.png"
+                alt="Kalika Furniture Logo"
+                className="h-12 w-auto md:h-16"
+              /> */}
+
+              {/* Brand Name */}
+              <div className="text-5xl md:text-6xl font-bold text-brand-red font-display hover:scale-105 transition-transform">
+                <span className="text-yellow-900">Kalika </span>
+                Furniture <span className="text-xl md:text-3xl">& Industries</span>
               </div>
             </div>
+
 
             {/* Desktop Actions - Enhanced */}
             <div className="hidden lg:flex items-center space-x-6">
@@ -161,9 +171,8 @@ const Header = () => {
           <div className="flex items-center justify-center relative">
             <ul className="flex items-center">
               {navLinks.map((link, index) => (
-                <a href={link.href}>
+                <a key={link.href} href={link.href}>
                   <div
-                    key={link.href}
                     className="relative group"
                   >
                     <li>
@@ -287,9 +296,9 @@ const Header = () => {
       )}
 
       {/* Franchise Form Modal */}
-      <FranchiseForm 
-        isOpen={isFranchiseFormOpen} 
-        onClose={() => setIsFranchiseFormOpen(false)} 
+      <FranchiseForm
+        isOpen={isFranchiseFormOpen}
+        onClose={() => setIsFranchiseFormOpen(false)}
       />
     </header>
   );

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaUser, FaBuilding } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 
 const CustomersPage = () => {
   const [formData, setFormData] = useState({
@@ -56,7 +56,7 @@ const CustomersPage = () => {
             Customer <span className="text-yellow-900">Enquiry</span>
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Get in touch with us for all your furniture needs. We're here to help you create the perfect space.
+            Get in touch with us for all your furniture needs. We&apos;re here to help you create the perfect space.
           </p>
         </div>
 

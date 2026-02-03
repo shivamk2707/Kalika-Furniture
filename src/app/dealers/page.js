@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaHandshake, FaStore } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaHandshake, FaStore } from "react-icons/fa";
 
 const DealersPage = () => {
   const [formData, setFormData] = useState({
@@ -64,7 +64,7 @@ const DealersPage = () => {
             Become a <span className="text-yellow-900">Kalika Dealer</span>
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Join our network of successful dealers and grow your business with India's leading furniture brand. 
+            Join our network of successful dealers and grow your business with India&apos;s leading furniture brand. 
             Partner with us for exclusive products, marketing support, and profitable opportunities.
           </p>
         </div>

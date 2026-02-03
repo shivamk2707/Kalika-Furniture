@@ -1,6 +1,7 @@
 'use client'; // if you're using this inside a Next.js app (for app router)
 
 import { useEffect } from 'react';
+import Image from 'next/image';
 
 const MetaPixel = () => {
   useEffect(() => {
@@ -32,9 +33,9 @@ const MetaPixel = () => {
 
   return (
     <noscript>
-      <img
-        height="1"
-        width="1"
+      <Image
+        height={1}
+        width={1}
         style={{ display: 'none' }}
         src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_META_ID || '1387603672324039'}&ev=PageView&noscript=1`}
         alt=""
