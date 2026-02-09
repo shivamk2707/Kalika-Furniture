@@ -46,7 +46,7 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://kalikafurniture.com"),
+  metadataBase: new URL("https://kalikaindustries.com"),
   alternates: {
     canonical: "/",
   },
@@ -68,7 +68,7 @@ export const metadata = {
     title: "Kalika Furniture - Premium Furniture & Home Furnishings",
     description:
       "Discover exquisite furniture and home furnishings from Kalika Furniture. Quality craftsmanship meets modern design.",
-    url: "https://kalikafurniture.com",
+    url: "https://kalikaindustries.com",
     siteName: "Kalika Furniture",
     images: [
       {
