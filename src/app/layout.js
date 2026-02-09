@@ -46,7 +46,7 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://kalikaindustries.com"),
+  metadataBase: new URL("https://kalikafurniture.com"),
   alternates: {
     canonical: "/",
   },
@@ -68,7 +68,7 @@ export const metadata = {
     title: "Kalika Furniture - Premium Furniture & Home Furnishings",
     description:
       "Discover exquisite furniture and home furnishings from Kalika Furniture. Quality craftsmanship meets modern design.",
-    url: "https://kalikaindustries.com",
+    url: "https://kalikafurniture.com",
     siteName: "Kalika Furniture",
     images: [
       {
@@ -118,6 +118,14 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${playfair.variable} ${poppins.variable}`}
     >
       <head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/images/KalikaFurnitureLogo.png" color="#C2B280" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+        <meta name="theme-color" content="#C2B280" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
@@ -129,9 +137,6 @@ export default function RootLayout({ children }) {
         <meta name="apple-mobile-web-app-title" content="Kalika Furniture" />
         <meta name="application-name" content="Kalika Furniture" />
         <meta name="msapplication-TileColor" content="#C2B280" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
-        <meta name="theme-color" content="#C2B280" />
-        <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className="antialiased bg-white text-neutral-900">
         <div id="root">
