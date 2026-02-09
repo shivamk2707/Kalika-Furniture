@@ -117,11 +117,11 @@ const Header = () => {
             </div> */}
             <div className="flex items-center">
               {/* Logo */}
-              <img
+              {/* <img
                 src="/images/KalikaFurnitureLogo.png"
                 alt="Kalika Furniture Logo"
                 className="h-12 w-auto md:h-16"
-              />
+              /> */}
 
               {/* Brand Name */}
               <div className="text-5xl md:text-6xl font-bold text-brand-red font-display hover:scale-105 transition-transform ml-2">
