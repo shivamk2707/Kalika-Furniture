@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
+import { submitForm } from "@/lib/formHelpers";
 
 const CustomersPage = () => {
   const [formData, setFormData] = useState({
@@ -26,25 +27,53 @@ const CustomersPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Customer enquiry submitted:", formData);
-    alert("Thank you for your enquiry! We will contact you soon.");
-    // Reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      company: "",
-      address: "",
-      city: "",
-      state: "",
-      pincode: "",
-      productInterest: "",
-      message: "",
-      preferredContact: "email",
-      budget: ""
-    });
+    
+    try {
+      // Show loading state
+      const submitButton = e.target.querySelector('button[type="submit"]');
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = 'Sending...';
+      submitButton.disabled = true;
+      
+      // Submit form data
+      const result = await submitForm(formData, 'customerEnquiry');
+      
+      if (result.success) {
+        alert(result.message);
+        // Reset form
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          company: "",
+          address: "",
+          city: "",
+          state: "",
+          pincode: "",
+          productInterest: "",
+          message: "",
+          preferredContact: "email",
+          budget: ""
+        });
+      } else {
+        alert('Sorry, there was an error submitting your enquiry. Please try again.');
+      }
+      
+      // Restore button
+      submitButton.innerHTML = originalText;
+      submitButton.disabled = false;
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('Sorry, there was an error submitting your enquiry. Please try again.');
+      // Restore button
+      const submitButton = e.target.querySelector('button[type="submit"]');
+      if (submitButton) {
+        submitButton.innerHTML = '<FaEnvelope /> <span>Send Enquiry</span>';
+        submitButton.disabled = false;
+      }
+    }
   };
 
   return (
