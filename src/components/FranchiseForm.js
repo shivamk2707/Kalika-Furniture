@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
+import { submitForm } from "@/lib/formHelpers";
 
 const FranchiseForm = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -26,13 +27,54 @@ const FranchiseForm = ({ isOpen, onClose }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // You can add API call or email functionality here
-    alert("Thank you for your enquiry! We will contact you soon.");
-    onClose();
+    
+    try {
+      // Show loading state
+      const submitButton = e.target.querySelector('button[type="submit"]');
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = 'Sending...';
+      submitButton.disabled = true;
+      
+      // Submit form data
+      const result = await submitForm(formData, 'franchiseEnquiry');
+      
+      if (result.success) {
+        alert(result.message);
+        onClose();
+        // Reset form
+        setFormData({
+          fullName: "",
+          mobileNo: "",
+          emailId: "",
+          pincode: "",
+          stateName: "",
+          cityName: "",
+          preferredTime: "",
+          locationPreference: "",
+          ownFranchisee: "No",
+          ownRetailSpace: "No",
+          propertyAvailability: "",
+          areaOfProperty: ""
+        });
+      } else {
+        alert('Sorry, there was an error submitting your enquiry. Please try again.');
+      }
+      
+      // Restore button
+      submitButton.innerHTML = originalText;
+      submitButton.disabled = false;
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('Sorry, there was an error submitting your enquiry. Please try again.');
+      // Restore button
+      const submitButton = e.target.querySelector('button[type="submit"]');
+      if (submitButton) {
+        submitButton.innerHTML = 'Send Enquiry';
+        submitButton.disabled = false;
+      }
+    }
   };
 
   if (!isOpen) return null;

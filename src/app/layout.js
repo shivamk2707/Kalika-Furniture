@@ -30,11 +30,14 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Kalika Furniture - Premium Furniture & Home Furnishings",
+  title: {
+    default: "Kalika Furniture - Premium Furniture & Home Furnishings",
+    template: "%s | Kalika Furniture"
+  },
   description:
-    "Discover exquisite furniture, and home furnishings from Kalika Furniture. Quality craftsmanship meets modern design.",
+    "Discover exquisite furniture and home furnishings from Kalika Furniture. Quality craftsmanship meets modern design.",
   keywords:
-    "furniture, home furnishings, sofas, beds, kalika furniture, interior design, furniture store",
+    "furniture, home furnishings, sofas, beds, kalika furniture, interior design, furniture store, home decor",
   authors: [{ name: "Kalika Furniture" }],
   creator: "Kalika Furniture",
   publisher: "Kalika Furniture",
@@ -43,21 +46,35 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://kalikaindustries.com"),
+  metadataBase: new URL("https://kalikafurniture.com"),
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" }
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+    ],
+    other: [
+      { rel: "mask-icon", url: "/KalikaFurnitureLogo.png", color: "#C2B280" }
+    ]
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "Kalika Furniture - Premium Furniture & Home Furnishings",
     description:
-      "Discover exquisite furniture, and home furnishings from Kalika Furniture. Quality craftsmanship meets modern design.",
-    url: "https://kalikaindustries.com",
+      "Discover exquisite furniture and home furnishings from Kalika Furniture. Quality craftsmanship meets modern design.",
+    url: "https://kalikafurniture.com",
     siteName: "Kalika Furniture",
     images: [
       {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "/images/KalikaFurnitureLogo.png",
+        width: 800,
+        height: 600,
         alt: "Kalika Furniture - Premium Furniture Store",
       },
     ],
@@ -65,11 +82,12 @@ export const metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Kalika Furniture - Premium Furniture & Home Furnishings",
     description:
-      "Discover exquisite furniture, and home furnishings from Kalika Furniture. Quality craftsmanship meets modern design.",
-    images: ["/images/twitter-image.jpg"],
+      "Discover exquisite furniture and home furnishings from Kalika Furniture. Quality craftsmanship meets modern design.",
+    images: ["/images/KalikaFurnitureLogo.png"],
+    creator: "@KalikaFurniture"
   },
   robots: {
     index: true,
@@ -87,6 +105,10 @@ export const metadata = {
     yandex: "your-yandex-verification-code",
     yahoo: "your-yahoo-verification-code",
   },
+  other: {
+    "theme-color": "#C2B280",
+    "color-scheme": "light"
+  }
 };
 
 export default function RootLayout({ children }) {
@@ -97,24 +119,12 @@ export default function RootLayout({ children }) {
     >
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/images/KalikaFurnitureLogo.png" color="#C2B280" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
         <meta name="theme-color" content="#C2B280" />
         <meta
           name="viewport"
@@ -127,7 +137,6 @@ export default function RootLayout({ children }) {
         <meta name="apple-mobile-web-app-title" content="Kalika Furniture" />
         <meta name="application-name" content="Kalika Furniture" />
         <meta name="msapplication-TileColor" content="#C2B280" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
       </head>
       <body className="antialiased bg-white text-neutral-900">
         <div id="root">

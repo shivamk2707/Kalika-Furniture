@@ -57,15 +57,17 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
+      }`}
     >
       {/* Enhanced Responsive Top Bar - Hidden when scrolled */}
       <div
-        className={`bg-neutral-800 text-neutral-100 py-2 md:py-3 text-xs sm:text-sm border-b border-yellow-900/10 transition-all duration-300 ${isScrolled
-          ? "transform -translate-y-full opacity-0 h-0 overflow-hidden"
-          : "transform translate-y-0 opacity-100"
-          }`}
+        className={`bg-neutral-800 text-neutral-100 py-2 md:py-3 text-xs sm:text-sm border-b border-yellow-900/10 transition-all duration-300 ${
+          isScrolled
+            ? "transform -translate-y-full opacity-0 h-0 overflow-hidden"
+            : "transform translate-y-0 opacity-100"
+        }`}
       >
         <div className="container mx-auto px-3 sm:px-4">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4">
@@ -101,8 +103,9 @@ const Header = () => {
 
       {/* Main Header - Adjusted padding when scrolled */}
       <div
-        className={`border-b border-neutral-100 transition-all duration-300 ${isScrolled ? "py-2" : "py-3"
-          }`}
+        className={`border-b border-neutral-100 transition-all duration-300 ${
+          isScrolled ? "py-2" : "py-3"
+        }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
@@ -121,12 +124,12 @@ const Header = () => {
               /> */}
 
               {/* Brand Name */}
-              <div className="text-5xl md:text-6xl font-bold text-brand-red font-display hover:scale-105 transition-transform">
+              <div className="text-5xl md:text-6xl font-bold text-brand-red font-display hover:scale-105 transition-transform ml-2">
                 <span className="text-yellow-900">Kalika </span>
-                Furniture <span className="text-xl md:text-3xl">& Industries</span>
+                Furniture{" "}
+                <span className="text-xl md:text-3xl">& Industries</span>
               </div>
             </div>
-
 
             {/* Desktop Actions - Enhanced */}
             <div className="hidden lg:flex items-center space-x-6">
@@ -164,19 +167,19 @@ const Header = () => {
 
       {/* Desktop Navigation - Animated Mega Menu */}
       <nav
-        className={`hidden lg:block bg-white border-b border-neutral-100 shadow-sm transition-all duration-300 ${isScrolled ? "py-1" : "py-0"
-          }`}
+        className={`hidden lg:block bg-white border-b border-neutral-100 shadow-sm transition-all duration-300 ${
+          isScrolled ? "py-1" : "py-0"
+        }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center relative">
             <ul className="flex items-center">
               {navLinks.map((link, index) => (
                 <a key={link.href} href={link.href}>
-                  <div
-                    className="relative group"
-                  >
+                  <div className="relative group">
                     <li>
-                      <h1 className={`block px-5 py-4 text-lg font-semibold tracking-wide transition-colors duration-300 border-r border-gray-200/50 cursor-pointer
+                      <h1
+                        className={`block px-5 py-4 text-lg font-semibold tracking-wide transition-colors duration-300 border-r border-gray-200/50 cursor-pointer
       ${index === navLinks.length - 1 ? "border-r-0" : ""}`}
                       >
                         {link.label}
@@ -218,14 +221,16 @@ const Header = () => {
                 </h4>
                 <div className="space-y-1">
                   {navLinks.map((category) => (
-                    <h1
-                      key={category.label}
-                      href={category.href}
-                      className="block py-3 px-4 hover:bg-neutral-50 rounded-lg transition-colors flex items-center cursor-pointer"
-                    >
-                      {/* Optionally, you can add an icon here if needed */}
-                      <span>{category.label}</span>
-                    </h1>
+                    <a key={category.label} href={category.href}>
+                      <h1
+                        key={category.label}
+                        href={category.href}
+                        className="block py-3 px-4 hover:bg-neutral-50 rounded-lg transition-colors flex items-center cursor-pointer"
+                      >
+                        {/* Optionally, you can add an icon here if needed */}
+                        <span>{category.label}</span>
+                      </h1>
+                    </a>
                   ))}
                 </div>
               </div>
@@ -270,14 +275,26 @@ const Header = () => {
                 </h4>
                 <div className="flex space-x-3 gap-4">
                   {[
-                    { icon: <FaFacebookF />, color: "bg-blue-600", link: 'https://www.facebook.com/profile.php?id=61586506439713' },
-                    { icon: <FaYoutube />, color: "bg-red-600", link: 'https://www.youtube.com/@kalika__furniture' },
+                    {
+                      icon: <FaFacebookF />,
+                      color: "bg-blue-600",
+                      link: "https://www.facebook.com/profile.php?id=61586506439713",
+                    },
+                    {
+                      icon: <FaYoutube />,
+                      color: "bg-red-600",
+                      link: "https://www.youtube.com/@kalika__furniture",
+                    },
                     {
                       icon: <FaInstagram />,
                       color: "bg-gradient-to-r from-purple-500 to-pink-500",
-                      link: 'https://www.instagram.com/kalika__furniture/?next=%2F&hl=en'
+                      link: "https://www.instagram.com/kalika__furniture/?next=%2F&hl=en",
                     },
-                    { icon: <FaWhatsapp />, color: "bg-green-500", link: 'https://wa.link/240434' },
+                    {
+                      icon: <FaWhatsapp />,
+                      color: "bg-green-500",
+                      link: "https://wa.link/240434",
+                    },
                   ].map((social, index) => (
                     <a
                       key={index}

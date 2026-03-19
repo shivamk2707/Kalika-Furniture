@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaHandshake, FaStore } from "react-icons/fa";
+import { submitForm } from "@/lib/formHelpers";
 
 const DealersPage = () => {
   const [formData, setFormData] = useState({
@@ -30,29 +31,57 @@ const DealersPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Dealer enquiry submitted:", formData);
-    alert("Thank you for your interest in becoming a dealer! We will contact you soon.");
-    // Reset form
-    setFormData({
-      fullName: "",
-      mobileNo: "",
-      emailId: "",
-      pincode: "",
-      stateName: "",
-      cityName: "",
-      preferredTime: "",
-      locationPreference: "",
-      ownFranchisee: "No",
-      ownRetailSpace: "No",
-      propertyAvailability: "",
-      areaOfProperty: "",
-      businessExperience: "",
-      investmentCapacity: "",
-      currentBusiness: "",
-      targetMarket: ""
-    });
+    
+    try {
+      // Show loading state
+      const submitButton = e.target.querySelector('button[type="submit"]');
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = 'Sending...';
+      submitButton.disabled = true;
+      
+      // Submit form data
+      const result = await submitForm(formData, 'dealerEnquiry');
+      
+      if (result.success) {
+        alert(result.message);
+        // Reset form
+        setFormData({
+          fullName: "",
+          mobileNo: "",
+          emailId: "",
+          pincode: "",
+          stateName: "",
+          cityName: "",
+          preferredTime: "",
+          locationPreference: "",
+          ownFranchisee: "No",
+          ownRetailSpace: "No",
+          propertyAvailability: "",
+          areaOfProperty: "",
+          businessExperience: "",
+          investmentCapacity: "",
+          currentBusiness: "",
+          targetMarket: ""
+        });
+      } else {
+        alert('Sorry, there was an error submitting your enquiry. Please try again.');
+      }
+      
+      // Restore button
+      submitButton.innerHTML = originalText;
+      submitButton.disabled = false;
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('Sorry, there was an error submitting your enquiry. Please try again.');
+      // Restore button
+      const submitButton = e.target.querySelector('button[type="submit"]');
+      if (submitButton) {
+        submitButton.innerHTML = 'Send Dealership Enquiry';
+        submitButton.disabled = false;
+      }
+    }
   };
 
   return (
