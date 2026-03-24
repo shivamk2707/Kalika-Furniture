@@ -127,7 +127,7 @@ const Header = () => {
               <div className="text-5xl md:text-6xl font-bold text-brand-red font-display hover:scale-105 transition-transform ml-2">
                 <span className="text-yellow-900">Kalika </span>
                 Furniture{" "}
-                <span className="text-xl md:text-3xl">& Industries</span>
+                <span className="text-4xl">& Industries</span>
               </div>
             </div>
 
